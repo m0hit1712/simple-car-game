@@ -1,0 +1,127 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta meta name="viewport" content="width=device-width, height=device-height" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Car Game </title>
+    <link rel="shortcut icon" type="image/png" href="./othert_assets/car1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">\
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if(isMobile)
+        {
+            document.write("<link rel='stylesheet' type='text/css' href='./othert_assets/mobile.css'/>");
+            var imported = document.createElement('script');
+            imported.src = './othert_assets/mobile.js';
+            document.body.appendChild(imported);
+        }
+        else
+        {
+            document.write("<link rel='stylesheet' type='text/css' href='./othert_assets/desktop.css'/>");
+            var imported = document.createElement('script');
+            imported.src = './othert_assets/desktop.js';
+            document.body.appendChild(imported);
+        }
+    </script>
+</head>
+<body>
+    <div id='controls'>
+        <div class="conts" id="up_arr"><i class='fa fa-caret-square-o-up'></i></div><br><br>
+        <div class="conts" id="left_arr"><i class='fa fa-caret-square-o-left'></i></div>
+        <div class="conts" id="space_bar"><div class="circle-stop"></div></div>
+        <div class="conts" id="right_arr"><i class='fa fa-caret-square-o-right'></i></div><br>
+        <div class="conts" id="down_arr"><i class='fa fa-caret-square-o-down'></i></div>
+    </div>
+    <label id="speed_lab">speed: 0</label>
+    <section id="scroller">
+        <div id="box"></div>
+            <div id="move">
+                <div id="car">
+                    <img id="car2" src="./othert_assets/car1.png" alt="car">
+                </div>
+                <div id="wheelcase">
+                    <div class="wheels" id="w1">
+                        <img  class="ww" src="./othert_assets/wheel1.png" alt="">
+                    </div>
+                    <div class="wheels" id="w2">
+                        <img class="ww" src="./othert_assets/wheel1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="back">
+        </div>
+    </section>
+
+    <div id="carselectors">
+        <img id="c1" onclick="carchanger(1)" src="./othert_assets/car1.png" alt="">
+        <img id="c2" onclick="carchanger(2)" src="./othert_assets/car2.png" alt="">
+        <img id="c3" onclick="carchanger(3)" src="./othert_assets/car3.png" alt="">
+    </div>
+
+    <div id="backselectors">
+        <img id="ba1" onclick="backchanger(1)" src="./othert_assets/background.png" alt="">
+        <img id="ba2" onclick="backchanger(2)" src="./othert_assets/background2.jpg" alt="">
+        <img id="ba3" onclick="backchanger(3)" src="./othert_assets/background3.png" alt="">
+    </div>
+
+    <button id="changeselector" onclick="selchanger()">Background</button>
+
+    <div id="speedometer">
+        <label id="digital_speed">000</label>
+        <img src="./othert_assets/speedometer.png" alt="">
+        <div id="pointer"></div>
+    </div>
+
+    <div id="mob_controls">
+        <div id="left_con" onclick="speeddown()" ontouchstart="speed_rapid_down()" ontouchend="clear_speed_down()">
+            <i class='fa fa-caret-square-o-down'></i>
+        </div>
+        <div id="instant_stop" onclick="stop()"></div>
+        <div id="right_con" onclick="speedup()" ontouchstart="speed_rapid_up()" ontouchend="clear_speed_up()">
+            <i class='fa fa-caret-square-o-up'></i>
+        </div>
+    </div>
+    <script>
+        if(isMobile)
+        {
+            document.getElementById("controls").style.display = "none";
+        }
+        else
+        {
+            document.getElementById("mob_controls").style.display = "none";
+        }
+        function speed_rapid_up()
+        {
+            speeduprapid = setInterval(speedup,80);
+        }
+        function clear_speed_up()
+        {
+            clearInterval(speeduprapid);
+        }
+        function speed_rapid_down()
+        {
+            speeddownrapid = setInterval(speeddown,80);
+        }
+        function clear_speed_down()
+        {
+            clearInterval(speeddownrapid);
+        }
+        setInterval(changetheback,40000);
+        function changetheback(){
+            if(runit)
+            {
+                document.getElementById("back").style.backgroundImage = "url('./othert_assets/background2.jpg')"
+            }
+        }
+    </script>
+</body>
+
+
+
+
+
+
